@@ -1,6 +1,5 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
@@ -14,23 +13,25 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Web XML Viewer
         </h1>
+        <div className={styles.footer}>
+          <a>Author: </a> <a href= "https://github.com/team172011"
+          rel="noopener noreferrer" target="_blank">Simon W.
+          </a> <a> Source code: </a> <a
+          href={"https://github.com/team172011"}
+          rel="noopener noreferrer" target="_blank">GitHub
+          </a>
+        <p/>
+        <p> This app does not save any of your data! All code only will be executed on your local machine.</p>
+      </div>
         <div>
-            <input type="file" id="files" name="files[]" multiple onChange={createGridForSelectedFile}/>
+            <input type="file" id="files" className={styles.inputfile} name="files[]" multiple onChange={createGridForSelectedFile}/>
         </div>
         <div className="gridView" id="gridViewDiv">
             <div className="nodeBodyDiv" id="divForContent"></div>
         </div>
       </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://www.google.com"
-          rel="noopener noreferrer">
-          Footer
-        </a>
-      </footer>
     </div>
   )
 }

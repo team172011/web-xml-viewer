@@ -1,3 +1,10 @@
+.main{
+
+}
+
+.title{
+  color:rgb(33, 31, 31);
+}
 .nodeDiv{
   color: black;
   border-style: outset;
@@ -38,14 +45,11 @@
   content: "\2796"; /* Unicode character for "minus" sign (-) */
 }
 
-
-
 .attributesDiv{ 
   padding: 0 18px;
   display: block;
   overflow: hidden;
 }
-
 
 .attributeHeaderParagraph{
   color:black;
@@ -94,4 +98,14 @@
 .attributesTableCaption {
   text-align: left;
   color: black;
+}
+
+.footer{
+  display: table-row;
+  width: 100%;
+  height: 0;
+}
+
+.footer *{
+  font-size: xx-small;
 }
