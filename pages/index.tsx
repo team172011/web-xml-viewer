@@ -19,7 +19,7 @@ const Home: NextPage = () => {
           <a>Author: </a> <a href= "https://github.com/team172011"
           rel="noopener noreferrer" target="_blank">Simon W.
           </a> <a> Source code: </a> <a
-          href={"https://github.com/team172011"}
+          href={"https://github.com/team172011/web-xml-viewer"}
           rel="noopener noreferrer" target="_blank">GitHub
           </a>
         <p/>
