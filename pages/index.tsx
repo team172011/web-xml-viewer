@@ -2,6 +2,20 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 
+function debug() {
+  return true;
+}
+
+const DownloadButton = props => {
+  const downloadFile = () => {
+    //window.location.href = "https://yoursite.com/src/assets/files/exampleDoc.pdf"
+    alert("Not jet implemented!")
+  }
+  return (
+    <button onClick={downloadFile} >Download</button>
+  )
+}
+
 const Home: NextPage = () => {
   return (
     <div className={styles.container}>
@@ -23,18 +37,19 @@ const Home: NextPage = () => {
           rel="noopener noreferrer" target="_blank">GitHub
           </a>
         <p/>
-        <p> This app does not save any of your data! All code only will be executed on your local machine.</p>
-      </div>
-        <div>
-            <input type="file" id="files" className={styles.inputfile} name="files[]" multiple onChange={createGridForSelectedFile}/>
         </div>
-        <div className="gridView" id="gridViewDiv">
-            <div className="nodeBodyDiv" id="divForContent"></div>
+        <div>
+          <input type="file" id="files" className={styles.inputfile} name="files[]" multiple onChange={createGridForSelectedFile}/>
+          <DownloadButton></DownloadButton>
+          <div className="gridView" id="gridViewDiv">
+          <div className="nodeBodyDiv" id="divForContent"></div>
+        </div>
         </div>
       </main>
     </div>
   )
 }
+
 
 function createGridForSelectedFile(event: any){
   let files = event.target.files;
@@ -43,8 +58,9 @@ function createGridForSelectedFile(event: any){
   fileReader.onload = function(event){
       let stringContent = fileReader.result;
       createAndFillGrid(stringContent as string);
-      console.log("file: " +  stringContent);
-
+      if(debug()) {
+        console.log("file: " +  stringContent);
+      }
   }
   fileReader.readAsText(file);
 }
@@ -66,16 +82,26 @@ function createNodeDiv(node: Element, id: string): HTMLElement{
   let divForTitleButton = ce('div', styles.nodeHeaderDiv);
   let divForContent = ce('div', styles.nodeBodyDiv);
   let divForAttributeContent = createAttributesDiv(node);
+  let divForInnerHtml = createInnerHtmlDiv(node);
   let titleButton = createTitleButton(node.tagName, divForContent);
   div.id = id;
   divForTitleButton.appendChild(titleButton);
   divForContent.id = 'divForContent';
   divForContent.style.display = 'none';
+  divForContent.appendChild(divForInnerHtml);
   divForContent.appendChild(divForAttributeContent);
   div.appendChild(divForTitleButton);
   div.appendChild(divForContent);
   return div;
 }
+
+function createInnerHtmlDiv(node: Element): HTMLElement {
+  let div: HTMLElement = ce('div', styles.innerHTMLDiv);
+  let value = ce('caption', styles.innerHTMLValue, node.innerHTML);
+  div.appendChild(value);
+  return div;
+}
+
 function createTitleButton(title: string, collapseElement: HTMLElement) : HTMLButtonElement {
   let titleButton = ce('button', styles.colapseButton, title) as HTMLButtonElement;
   titleButton.onclick = function() {

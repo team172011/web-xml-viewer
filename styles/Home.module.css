@@ -1,6 +1,7 @@
 .title{
   color:rgb(33, 31, 31);
 }
+
 .nodeDiv{
   color: black;
   border-style: outset;
@@ -41,12 +42,6 @@
   content: "\2796"; /* Unicode character for "minus" sign (-) */
 }
 
-.attributesDiv{ 
-  padding: 0 18px;
-  display: block;
-  overflow: hidden;
-}
-
 .attributeHeaderParagraph{
   color:black;
   margin: 1px;
@@ -60,6 +55,11 @@
 .attributeValueParagraph{
   color: red;
   margin: 1px;
+}
+
+.innerHTMLValue{
+  color: black;
+  width: 100%;
 }
 
 .attributesTable{
@@ -104,4 +104,21 @@
 
 .footer *{
   font-size: xx-small;
+}
+
+.nodeBodyDiv {
+  width: 100%;
+}
+
+.innerHTMLDiv {
+  display: flex;
+  width: 50%;
+  text-align: left;
+}
+
+.attributesDiv{ 
+  padding: 0 18px;
+  display: inline-block;
+  width: 50%;
+  overflow: hidden;
 }
